@@ -67,9 +67,6 @@ public class Boost : MonoBehaviour
 
     private void LifeBoost()
     {
-        if (playerScript.life < config.vidas)
-        {
-            playerScript.life += lifeUp;
-        }
+        
     }
 }

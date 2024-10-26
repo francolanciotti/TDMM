@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Configuraci�n de movimiento")]
+    [Header("Configuración de movimiento")]
     public bool carriles = false;
     public bool autoPilot = false;
-    // Este arreglo es para guardar las posiciones en donde se mueve el jugador cuando carriles esta activado.
     [HideInInspector] public float[] posCarriles;
     [SerializeField] private int cantCarriles = 3;
     [SerializeField] private float movementDistance = 6.0f;
@@ -18,46 +17,58 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public float speed = 8;
 
-
     [SerializeField] private bool puedeVolar = false;
 
-    [Header("Configuraci�n de vida")]
+    [Header("Configuración de vida")]
     [HideInInspector] public int life = 3;
     [HideInInspector] public bool inmunity = false;
 
-
-    [Header("Configuraci�n de municiones")]
+    [Header("Configuración de municiones")]
     [SerializeField] private GameObject[] bullets;
     [SerializeField] private int bulletType = 0;
     [SerializeField] private float fireRate = 0.5F;
     [SerializeField] private bool canShoot = true;
 
-    [Header("Configuraci�n generales")]
+    [Header("Configuración generales")]
     [SerializeField] private Configuracion_General config;
 
+    // Variables para el CapsuleCollider
+    private CapsuleCollider capsuleCollider;
+    private float originalHeight;
+    private float newHeight = 4f; // Nueva altura del collider
+    private Vector3 originalCenter;
+    private Vector3 newCenter = new Vector3(0f, 1f, 0f); // Nuevo centro del collider
 
     // Start is called before the first frame update
     void Start()
     {
         life = config.vidas;
         speed = config.velocidad;
+
+        // Inicializa el CapsuleCollider
+        capsuleCollider = GetComponent<CapsuleCollider>();
+        if (capsuleCollider != null)
+        {
+            originalHeight = capsuleCollider.height; // Guarda la altura original
+            originalCenter = capsuleCollider.center; // Guarda el centro original
+        }
+
+        // Configuración de carriles
         if (carriles)
         {
             if (cantCarriles == 2)
             {
                 posCarriles = new float[3] { -movementDistance, 0, movementDistance };
-            } else if (cantCarriles == 3)
+            }
+            else if (cantCarriles == 3)
             {
                 posCarriles = new float[2] { -movementDistance, movementDistance };
-                //transform.Translate(this.transform.position.x + movementDistance, transform.position.y, 0);
-            } else
-            {
-                Debug.Log("Estas intentando usar" + cantCarriles + ". El permitido es tres o dos. Para otra config hay que programarlo");
             }
-
-
+            else
+            {
+                Debug.Log("Estas intentando usar " + cantCarriles + ". El permitido es tres o dos.");
+            }
         }
-
     }
 
     // Update is called once per frame
@@ -65,6 +76,7 @@ public class Player : MonoBehaviour
     {
         Movement();
         Shoot();
+        Chupar();
     }
 
     private void Movement()
@@ -75,7 +87,6 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.D))
             {
-                print("ok");
                 if (playerPosition < posCarriles[1])
                 {
                     transform.Translate(movementDistance, 0, 0);
@@ -87,7 +98,6 @@ public class Player : MonoBehaviour
                 {
                     transform.Translate(-movementDistance, 0, 0);
                 }
-
             }
         }
         else
@@ -118,8 +128,6 @@ public class Player : MonoBehaviour
                     transform.position = new Vector2(transform.position.x, limitY);
                 }
             }
-
-
         }
 
         if (autoPilot)
@@ -128,11 +136,12 @@ public class Player : MonoBehaviour
             Debug.Log(speed);
         }
     }
-    void OnTriggerEnter(Collider obj){
-        
-        Debug.Log("choqué con algo y su tag es: "+ obj.gameObject.tag);
 
+    void OnTriggerEnter(Collider obj)
+    {
+        Debug.Log("Choqué con algo y su tag es: " + obj.gameObject.tag);
     }
+
     public void Damage(int _dmg)
     {
         if (inmunity == false)
@@ -146,18 +155,14 @@ public class Player : MonoBehaviour
                     Destroy(this.gameObject);
                 }
             }
-            else if (life <= 0)
-            {
-                config.perdiste = true;
-                Destroy(this.gameObject);
-            }
-        } else
+        }
+        else
         {
             inmunity = false;
         }
-        //Actualizamos la variable de vida de la configuracion general.
-        config.vidas = life;
 
+        // Actualizamos la variable de vida de la configuración general
+        config.vidas = life;
     }
 
     private void Shoot()
@@ -168,30 +173,23 @@ public class Player : MonoBehaviour
             if (Configuracion_General.runner3D == false)
             {
                 Instantiate(bullets[bulletType], new Vector3(transform.position.x, transform.position.y + 1, 0), Quaternion.identity);
-            } else
+            }
+            else
             {
                 Instantiate(bullets[bulletType], new Vector3(transform.position.x, -1f, transform.position.z), Quaternion.identity);
             }
-
         }
     }
 
     public IEnumerator ShootDelay()
     {
-        if (Configuracion_General.runner3D == false)
-        {
-            Instantiate(bullets[bulletType], new Vector3(transform.position.x, transform.position.y + 1, 0), Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(bullets[bulletType], new Vector3(transform.position.x, -1f, transform.position.z), Quaternion.identity);
-        }
         canShoot = false;
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
 
-    public void moveOSC (float _x) {
+    public void moveOSC(float _x)
+    {
         transform.Translate(Vector3.right * speed * _x * Time.deltaTime);
         if (transform.position.x > limitX)
         {
@@ -202,4 +200,36 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(-limitX, transform.position.y);
         }
     }
+
+    private void Chupar()
+{
+    // Cambia el center y la height del CapsuleCollider mientras se mantiene la tecla "F"
+    if (Input.GetKey(KeyCode.F))
+    {
+        ChangeColliderProperties(true); // Cambiar propiedades
+    }
+    else
+    {
+        ChangeColliderProperties(false); // Revertir propiedades
+    }
+
+    // Otras funcionalidades que quieras agregar para Chupar
+}
+
+private void ChangeColliderProperties(bool isChanging)
+{
+    if (capsuleCollider != null)
+    {
+        if (isChanging)
+        {
+            capsuleCollider.height = newHeight;
+            capsuleCollider.center = newCenter;
+        }
+        else
+        {
+            capsuleCollider.height = originalHeight;
+            capsuleCollider.center = originalCenter;
+        }
+    }
+}
 }

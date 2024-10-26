@@ -162,17 +162,8 @@ public class EnemyAI : MonoBehaviour
 
     private void destroyMe ()
     {
-        if (SpawnManager.activeEnemies.Count > 0)
-        {
-            for (int i = 0; i < SpawnManager.activeEnemies.Count; i++)
-            {
-                if (SpawnManager.activeEnemies[i].transform.position == this.gameObject.transform.position)
-                {
-                    SpawnManager.activeEnemies.Remove(SpawnManager.activeEnemies[i]);
-                    Destroy(this.gameObject);
-                    break;
-                }
+        Destroy(this.gameObject);
             }
         }
-    }
-}
+    
+

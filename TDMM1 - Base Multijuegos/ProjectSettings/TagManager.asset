@@ -8,6 +8,11 @@ TagManager:
   - Bullet
   - Obstaculo
   - Velocidad
+  - NotaGanadora
+  - Nota
+  - ActivadorNutria
+  - Spawner
+  - Helado
   layers:
   - Default
   - TransparentFX
