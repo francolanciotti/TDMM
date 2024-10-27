@@ -151,9 +151,11 @@ public class Player : MonoBehaviour
                 life -= _dmg;
                 if (life <= 0)
                 {
-                    config.perdiste = true;
-                    Destroy(this.gameObject);
-                }
+                 Debug.Log("El jugador ha perdido.");
+                 config.perdiste = true;
+                 Destroy(this.gameObject);
+                 }
+
             }
         }
         else
@@ -167,7 +169,7 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && canShoot)
+        if (Input.GetKeyDown(KeyCode.E) && canShoot)
         {
             StartCoroutine(ShootDelay());
             if (Configuracion_General.runner3D == false)
