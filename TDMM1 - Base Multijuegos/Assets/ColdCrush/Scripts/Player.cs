@@ -22,12 +22,9 @@ public class Player : MonoBehaviour
     [Header("Configuración de vida")]
     [HideInInspector] public int life = 3;
     [HideInInspector] public bool inmunity = false;
-
-    [Header("Configuración de municiones")]
-    [SerializeField] private GameObject[] bullets;
-    [SerializeField] private int bulletType = 0;
-    [SerializeField] private float fireRate = 0.5F;
-    [SerializeField] private bool canShoot = true;
+    
+    [Header("Configuración de Succion de helado")]
+    [SerializeField] public bool canSuck = true;
 
     [Header("Configuración generales")]
     [SerializeField] private Configuracion_General config;
@@ -75,7 +72,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
-        Shoot();
         Chupar();
     }
 
@@ -167,29 +163,6 @@ public class Player : MonoBehaviour
         config.vidas = life;
     }
 
-    private void Shoot()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && canShoot)
-        {
-            StartCoroutine(ShootDelay());
-            if (Configuracion_General.runner3D == false)
-            {
-                Instantiate(bullets[bulletType], new Vector3(transform.position.x, transform.position.y + 1, 0), Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(bullets[bulletType], new Vector3(transform.position.x, -1f, transform.position.z), Quaternion.identity);
-            }
-        }
-    }
-
-    public IEnumerator ShootDelay()
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(fireRate);
-        canShoot = true;
-    }
-
     public void moveOSC(float _x)
     {
         transform.Translate(Vector3.right * speed * _x * Time.deltaTime);
@@ -206,7 +179,7 @@ public class Player : MonoBehaviour
     private void Chupar()
 {
     // Cambia el center y la height del CapsuleCollider mientras se mantiene la tecla "F"
-    if (Input.GetKey(KeyCode.F))
+    if (Input.GetKey(KeyCode.F) && canSuck)
     {
         ChangeColliderProperties(true); // Cambiar propiedades
     }
