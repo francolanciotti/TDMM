@@ -7,16 +7,15 @@ public class Boost : MonoBehaviour
     //private Player playerScript;
     [SerializeField] private float BoostTimer = 0.1f;
     [SerializeField] private float speedUp = 4f;
-    [SerializeField] private int lifeUp = 1;
+    [SerializeField] public int cantidadDeHelados = 1; // Cantidad de helados que da este objeto
     [SerializeField] public Player playerScript;
     [SerializeField] private Configuracion_General config;
     //Estructura de datos para definir tipo de boost
 
     public enum boostType // your custom enumeration
     {
-        Defensa,
         Velocidad,
-        Vida
+        Helado,
     };
 
     public boostType bs;
@@ -28,31 +27,22 @@ public class Boost : MonoBehaviour
         {
             switch (bs)
             {
-                case boostType.Defensa:
-                    StartCoroutine(DefenseBoost());
-                    break;
                 case boostType.Velocidad:
                     StartCoroutine(SpeedBoost());
                     break;
-                case boostType.Vida:
-                    if (playerScript != null)
+                case boostType.Helado:
+
+                    Mochila mochila = other.GetComponent<Mochila>();
+
+                    if (mochila != null)
                     {
-                        LifeBoost();
+                        mochila.AñadirHelado(cantidadDeHelados);
+                        Destroy(gameObject); // Destruir el objeto helado
                     }
                     break;
             }
 
         }
-    }
-
-    IEnumerator DefenseBoost()
-    {
-            if (playerScript != null)
-            {
-                playerScript.inmunity = true;
-            }
-            yield return new WaitForSeconds(BoostTimer);
-            playerScript.inmunity = false;
     }
 
     IEnumerator SpeedBoost()
@@ -65,8 +55,4 @@ public class Boost : MonoBehaviour
         playerScript.speed -= speedUp;
     }
 
-    private void LifeBoost()
-    {
-        
-    }
 }

@@ -5,13 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
-  - Bullet
   - Obstaculo
   - Velocidad
-  - NotaGanadora
-  - Nota
-  - ActivadorNutria
-  - Spawner
   - Helado
   layers:
   - Default

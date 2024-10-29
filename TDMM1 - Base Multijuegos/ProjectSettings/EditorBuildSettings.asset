@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ColdCrush/Scenes/Runner3D.unity
+    path: Assets/ColdCrush/Scenes/Menu.unity
+    guid: 6709b4e6e4414414993125a16448ab0e
+  - enabled: 1
+    path: Assets/ColdCrush/Scenes/Nivel1.unity
     guid: 1c4cc1098e3d45d4484822079fe1c79a
   - enabled: 1
     path: Assets/ColdCrush/Scenes/Perder.unity
@@ -14,8 +17,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ColdCrush/Scenes/Ganar.unity
     guid: 0dc7b7c499b46304c88094004e6d6b23
-  - enabled: 1
-    path: Assets/ColdCrush/Scenes/Menu.unity
-    guid: 6709b4e6e4414414993125a16448ab0e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

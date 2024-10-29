@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
                 {
                  Debug.Log("El jugador ha perdido.");
                  config.perdiste = true;
-                 Destroy(this.gameObject);
+                 //Destroy(this.gameObject);
                  }
 
             }
