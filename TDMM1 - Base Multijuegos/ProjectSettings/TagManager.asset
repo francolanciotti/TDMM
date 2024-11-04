@@ -15,10 +15,10 @@ TagManager:
   - 
   - Water
   - UI
-  - TT
-  - 
-  - 
-  - 
+  - Escenarios
+  - Escenario principal
+  - Componentes
+  - Personajes
   - 
   - 
   - 
@@ -44,12 +44,6 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Nutrias
-    uniqueID: 4278315129
-    locked: 0
-  - name: "ElementosF\xEDsicos"
-    uniqueID: 107529257
     locked: 0
   m_RenderingLayers:
   - Default
