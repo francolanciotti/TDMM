@@ -41,7 +41,7 @@ public class Configuracion_General : MonoBehaviour
     [SerializeField] private Text lifeText;
 
     [Header("Configuracion de Escenas")]
-    public int escenajuego;
+    public int nivel1;
     public int escenaperdiste;
     public int escenaganaste;
     public bool perdiste = false;
