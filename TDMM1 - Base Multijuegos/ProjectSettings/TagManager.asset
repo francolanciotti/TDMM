@@ -8,6 +8,7 @@ TagManager:
   - Obstaculo
   - Velocidad
   - Helado
+  - Tutorial
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Escenario
+    uniqueID: 3272230371
+    locked: 0
+  - name: Escenario Pricipal
+    uniqueID: 1776038195
+    locked: 0
+  - name: Componentes
+    uniqueID: 2879962535
+    locked: 0
+  - name: Personajes
+    uniqueID: 2172028439
     locked: 0
   m_RenderingLayers:
   - Default

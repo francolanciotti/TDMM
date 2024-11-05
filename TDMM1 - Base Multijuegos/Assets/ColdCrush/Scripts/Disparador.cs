@@ -25,7 +25,7 @@ public class Disparador : MonoBehaviour
 private void CrearCharcoDetrasDelJugador()
 {
     // Calcula la posición detrás del jugador
-    Vector3 posicionDetras = new Vector3(transform.position.x, -1.9f, transform.position.z - 1f);
+    Vector3 posicionDetras = new Vector3(transform.position.x, 2.1f, transform.position.z - 1f);
 
     // Define la rotación deseada (90 grados en el eje X)
     Quaternion rotacionCharco = Quaternion.Euler(90, 0, 0);

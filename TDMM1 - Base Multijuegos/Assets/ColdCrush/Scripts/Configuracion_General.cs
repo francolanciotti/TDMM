@@ -65,7 +65,7 @@ public class Configuracion_General : MonoBehaviour
         }
         else
         {
-            Debug.Log("No hay un text asignado para el puntaje");
+            
         }
         if (lifeText != null)
         {
@@ -73,7 +73,7 @@ public class Configuracion_General : MonoBehaviour
         }
         else
         {
-            Debug.Log("No hay un text asignado para la vida");
+            
         }
 
         if (perdiste)
