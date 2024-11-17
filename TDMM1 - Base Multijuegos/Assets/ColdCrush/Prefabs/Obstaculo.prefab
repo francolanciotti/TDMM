@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3830974283496562351}
   - component: {fileID: 9008014872901929917}
   - component: {fileID: 133543864788621981}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstaculo
   m_TagString: Obstaculo
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 960efbd1b805a5343b445de1af98428e, type: 2}
+  - {fileID: 2100000, guid: 8a0e7ee5bc785f84fbd928c0714e67fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1415004761
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.8700229, b: 0, a: 1}
@@ -101,12 +101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293070608e25cea4cb7b9446c241fe22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoostTimer: 3
-  speedUp: -3
-  lifeUp: 1
+  BoostTimer: 2
+  speedUp: -2
+  cantidadDeHelados: 1
   playerScript: {fileID: 0}
   config: {fileID: 0}
-  bs: 1
+  animator: {fileID: 0}
+  boostUI: {fileID: 0}
+  bs: 3
 --- !u!135 &133543864788621981
 SphereCollider:
   m_ObjectHideFlags: 0

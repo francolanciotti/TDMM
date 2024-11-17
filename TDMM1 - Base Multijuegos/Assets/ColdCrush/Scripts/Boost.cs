@@ -1,47 +1,56 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boost : MonoBehaviour
 {
-    //private Player playerScript;
-    [SerializeField] private float BoostTimer = 0.1f;
-    [SerializeField] private float speedUp = 4f;
-    [SerializeField] public int cantidadDeHelados = 1; // Cantidad de helados que da este objeto
-    [SerializeField] public Player playerScript;
+    [SerializeField] private float BoostTimer = 0.1f;  // Duración del boost
+    [SerializeField] private float speedUp = 4f;       // Incremento de velocidad
+    [SerializeField] public int cantidadDeHelados = 1; // Cantidad de helados
+    [SerializeField] public Player playerScript;       // Script del jugador
     [SerializeField] private Configuracion_General config;
-    //Estructura de datos para definir tipo de boost
+    [SerializeField] public Animator animator;
+    [SerializeField] private BoostUI boostUI;           // Referencia a BoostUI para activar las barras
 
-    public enum boostType // your custom enumeration
+    public enum boostType
     {
         Velocidad,
         Helado,
+        Fantasma,
+        Obstaculo
     };
 
     public boostType bs;
 
     void OnTriggerEnter(Collider other)
     {
-        // Si el boost choca con el jugador
         if (other.gameObject.tag == "Player")
         {
             switch (bs)
             {
                 case boostType.Velocidad:
                     StartCoroutine(SpeedBoost());
+                    boostUI.ActivateBoostBar(boostType.Velocidad, BoostTimer);  // Activar barra de Velocidad
                     break;
+
                 case boostType.Helado:
-
                     Mochila mochila = other.GetComponent<Mochila>();
-
                     if (mochila != null)
                     {
                         mochila.AñadirHelado(cantidadDeHelados);
-                        Destroy(gameObject); // Destruir el objeto helado
+                        Destroy(gameObject); // Destruir objeto de helado
                     }
                     break;
-            }
 
+                case boostType.Fantasma:
+                    StartCoroutine(DisableSuck());
+                    boostUI.ActivateBoostBar(boostType.Fantasma, BoostTimer);  // Activar barra de Fantasma
+                    break;
+
+                case boostType.Obstaculo:
+                    StartCoroutine(SpeedBoost());
+                    boostUI.ActivateBoostBar(boostType.Obstaculo, BoostTimer);  // Activar barra de Obstáculo
+                    break;
+            }
         }
     }
 
@@ -49,10 +58,27 @@ public class Boost : MonoBehaviour
     {
         if (playerScript != null)
         {
-            playerScript.speed += speedUp;
+            playerScript.speed += speedUp; // Aumentar la velocidad
         }
-        yield return new WaitForSeconds(BoostTimer);
-        playerScript.speed -= speedUp;
+        yield return new WaitForSeconds(BoostTimer); // Esperar el BoostTimer
+        if (playerScript != null)
+        {
+            playerScript.speed -= speedUp; // Restablecer la velocidad
+        }
     }
 
+    IEnumerator DisableSuck()
+    {
+        if (playerScript != null)
+        {
+            playerScript.canSuck = true;    // Habilitar acción de "Suck"
+            animator.SetBool("CanSuck", true);
+        }
+        yield return new WaitForSeconds(BoostTimer); // Esperar el BoostTimer
+        if (playerScript != null)
+        {
+            playerScript.canSuck = false;   // Deshabilitar acción de "Suck"
+            animator.SetBool("CanSuck", false);
+        }
+    }
 }

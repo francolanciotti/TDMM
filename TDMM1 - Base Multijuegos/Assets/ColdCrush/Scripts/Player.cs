@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public bool carriles = false;
     public bool autoPilot = false;
     [HideInInspector] public float[] posCarriles;
+    [SerializeField] public Animator animator;
     [SerializeField] private int cantCarriles = 3;
     [SerializeField] private float movementDistance = 6.0f;
 
@@ -22,9 +23,11 @@ public class Player : MonoBehaviour
     [Header("Configuración de vida")]
     [HideInInspector] public int life = 3;
     [HideInInspector] public bool inmunity = false;
-    
+
     [Header("Configuración de Succion de helado")]
     [SerializeField] public bool canSuck = true;
+    [SerializeField] public float suckDuration = 2f;
+    private bool isSucking = false;
 
     [Header("Configuración generales")]
     [SerializeField] private Configuracion_General config;
@@ -59,7 +62,7 @@ public class Player : MonoBehaviour
             }
             else if (cantCarriles == 3)
             {
-                posCarriles = new float[2] { -movementDistance, movementDistance };
+                posCarriles = new float[3] { -movementDistance, 0, movementDistance };  // Añadimos el carril intermedio
             }
             else
             {
@@ -73,27 +76,27 @@ public class Player : MonoBehaviour
     {
         Movement();
         Chupar();
+        animator.SetFloat("Speed", speed);
     }
 
     private void Movement()
     {
         if (carriles)
         {
+            // Movimiento en el eje X entre carriles usando los botones 1, 2 y 3
             float playerPosition = transform.position.x;
 
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.Alpha1)) // Carril izquierdo
             {
-                if (playerPosition < posCarriles[1])
-                {
-                    transform.Translate(movementDistance, 0, 0);
-                }
+                transform.position = new Vector3(posCarriles[0], transform.position.y, transform.position.z);
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(KeyCode.Alpha2)) // Carril central
             {
-                if (playerPosition > posCarriles[0])
-                {
-                    transform.Translate(-movementDistance, 0, 0);
-                }
+                transform.position = new Vector3(posCarriles[1], transform.position.y, transform.position.z);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3)) // Carril derecho
+            {
+                transform.position = new Vector3(posCarriles[2], transform.position.y, transform.position.z);
             }
         }
         else
@@ -147,11 +150,10 @@ public class Player : MonoBehaviour
                 life -= _dmg;
                 if (life <= 0)
                 {
-                 Debug.Log("El jugador ha perdido.");
-                 config.perdiste = true;
-                 //Destroy(this.gameObject);
-                 }
-
+                    Debug.Log("El jugador ha perdido.");
+                    config.perdiste = true;
+                    //Destroy(this.gameObject);
+                }
             }
         }
         else
@@ -177,34 +179,38 @@ public class Player : MonoBehaviour
     }
 
     private void Chupar()
-{
-    // Cambia el center y la height del CapsuleCollider mientras se mantiene la tecla "F"
-    if (Input.GetKey(KeyCode.F) && canSuck)
     {
-        ChangeColliderProperties(true); // Cambiar propiedades
+        // Si se presiona la tecla "+" y no está ya activo
+        if (Input.GetKeyDown(KeyCode.F) && canSuck && !isSucking)
+        {
+            animator.SetBool("Chupar", true);
+            isSucking = true; // Activar estado
+            ChangeColliderProperties(true); // Cambiar propiedades
+            Invoke("StopSucking", suckDuration); // Programar la desactivación después de suckDuration segundos
+        }
     }
-    else
+
+    private void ChangeColliderProperties(bool isChanging)
     {
+        if (capsuleCollider != null)
+        {
+            if (isChanging)
+            {
+                capsuleCollider.height = newHeight;
+                capsuleCollider.center = newCenter;
+            }
+            else
+            {
+                capsuleCollider.height = originalHeight;
+                capsuleCollider.center = originalCenter;
+            }
+        }
+    }
+
+    private void StopSucking()
+    {
+        isSucking = false;
         ChangeColliderProperties(false); // Revertir propiedades
+        animator.SetBool("Chupar", false);
     }
-
-    // Otras funcionalidades que quieras agregar para Chupar
-}
-
-private void ChangeColliderProperties(bool isChanging)
-{
-    if (capsuleCollider != null)
-    {
-        if (isChanging)
-        {
-            capsuleCollider.height = newHeight;
-            capsuleCollider.center = newCenter;
-        }
-        else
-        {
-            capsuleCollider.height = originalHeight;
-            capsuleCollider.center = originalCenter;
-        }
-    }
-}
 }

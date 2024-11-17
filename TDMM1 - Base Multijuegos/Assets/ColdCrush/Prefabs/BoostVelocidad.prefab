@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2253145173178259367}
   - component: {fileID: 8861023714965766920}
   - component: {fileID: 5015218933180630071}
-  - component: {fileID: 8699928181576439306}
-  m_Layer: 0
+  - component: {fileID: 5522523483762506657}
+  m_Layer: 8
   m_Name: BoostVelocidad
   m_TagString: Velocidad
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -1.9, z: 25}
   m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 960efbd1b805a5343b445de1af98428e, type: 2}
+  - {fileID: 2100000, guid: 8a0e7ee5bc785f84fbd928c0714e67fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,11 +76,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1415004761
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.88816905, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 69538aa4a0fb3bb48825796a2cccc7f1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,12 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293070608e25cea4cb7b9446c241fe22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoostTimer: 3
-  speedUp: 5
-  lifeUp: 1
+  BoostTimer: 2
+  speedUp: 2
+  cantidadDeHelados: 1
   playerScript: {fileID: 0}
   config: {fileID: 0}
-  bs: 1
+  animator: {fileID: 0}
+  boostUI: {fileID: 0}
+  bs: 0
 --- !u!135 &5015218933180630071
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -123,30 +125,22 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &8699928181576439306
-SphereCollider:
+--- !u!114 &5522523483762506657
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276668440926752536}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0b560d176cd204fa74776d783d61d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToActivate: {fileID: 0}

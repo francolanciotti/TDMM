@@ -16,7 +16,6 @@ public class Mochila : MonoBehaviour
         if (helados >= 5)
         {
             shoot = true;
-            Debug.Log("¡Disparador activado!");
         }
     }
 
