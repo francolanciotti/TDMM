@@ -1,0 +1,425 @@
+fileFormatVersion: 2
+guid: 94ca4f0156cdac147a1feec906c85000
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Speed_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 42
+        width: 281
+        height: 600
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 932f4dddf4d13a84f99bf847ac3920ca
+      internalID: -1671389741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_1
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 42
+        width: 289
+        height: 603
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd937ea9e9c61b4eb4f8f7a48fc1e62
+      internalID: 610906741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_3
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 20
+        width: 281
+        height: 626
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 615eb61059804c8458ef6dac840b1676
+      internalID: -1028540470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_4
+      rect:
+        serializedVersion: 2
+        x: 2350
+        y: 32
+        width: 300
+        height: 610
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e498e8bc1ec6f3b489039d3f9c7d3485
+      internalID: -807167778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_8
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 39
+        width: 301
+        height: 607
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72bd4d63190bc194e95ed3ccfd46e3ac
+      internalID: 143468691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_12
+      rect:
+        serializedVersion: 2
+        x: 4239
+        y: 27
+        width: 278
+        height: 618
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b90d5fa44b477c4b89ce659cb986611
+      internalID: -1860101294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_15
+      rect:
+        serializedVersion: 2
+        x: 5192
+        y: 46
+        width: 277
+        height: 600
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b69d20fdaff9e418b7105bbea73a84
+      internalID: 1649913430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_16
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 42
+        width: 285
+        height: 593
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7babefe667252984f920b28cac4c4da6
+      internalID: -1089452796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_19
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 35
+        width: 270
+        height: 603
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c913fe16e62bb41a4612fd796f0edf
+      internalID: -1372098628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_20
+      rect:
+        serializedVersion: 2
+        x: 3290
+        y: 39
+        width: 303
+        height: 600
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53352c8edc092a42b998bf55c3cb59a
+      internalID: -330976336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_22
+      rect:
+        serializedVersion: 2
+        x: 3768
+        y: 38
+        width: 282
+        height: 598
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5d836741bb18314fb71a057a53fbf52
+      internalID: 891426481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed_23
+      rect:
+        serializedVersion: 2
+        x: 4713
+        y: 36
+        width: 279
+        height: 602
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14cbbe970d11c3c4780e67aba2113995
+      internalID: -703530676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a74e53b486e17364db74c97029ea7533
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Speed_0: -1671389741
+      Speed_1: 610906741
+      Speed_10: 1721349250
+      Speed_11: 2039096814
+      Speed_12: -1860101294
+      Speed_13: 958618043
+      Speed_14: -425185200
+      Speed_15: 1649913430
+      Speed_16: -1089452796
+      Speed_17: -1339908964
+      Speed_18: 1864262742
+      Speed_19: -1372098628
+      Speed_2: -1107879445
+      Speed_20: -330976336
+      Speed_21: -1808994965
+      Speed_22: 891426481
+      Speed_23: -703530676
+      Speed_24: 585727262
+      Speed_25: 380977551
+      Speed_26: -562435429
+      Speed_27: -505586931
+      Speed_28: -446537325
+      Speed_29: -1580019159
+      Speed_3: -1028540470
+      Speed_30: 1056777698
+      Speed_31: -927614086
+      Speed_32: 156916859
+      Speed_33: 2058422679
+      Speed_34: 342298697
+      Speed_35: 1637031839
+      Speed_36: -274091601
+      Speed_37: 2146075679
+      Speed_38: 1351136838
+      Speed_39: 68592519
+      Speed_4: -807167778
+      Speed_40: -195325352
+      Speed_41: -1788396717
+      Speed_42: 788813519
+      Speed_43: 1459810194
+      Speed_5: -1713657745
+      Speed_6: -296322739
+      Speed_7: 1948614494
+      Speed_8: 143468691
+      Speed_9: -1106450318
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
