@@ -29,7 +29,7 @@ public class PanelController3 : MonoBehaviour
     private void Update()
     {
         // Desactiva el panel y reanuda el juego al presionar las teclas "D" o "A"
-        if (panel != null && panel.activeSelf && (Input.GetKeyDown(KeyCode.Space)))
+        if (panel != null && panel.activeSelf && (Input.GetKeyDown(KeyCode.Comma)))
         {
             panel.SetActive(false);
             Time.timeScale = 1f; // Reanuda el juego

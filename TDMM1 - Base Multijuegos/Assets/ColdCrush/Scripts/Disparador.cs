@@ -13,7 +13,7 @@ public class Disparador : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Por ejemplo, usar la barra espaciadora para disparar
+        if (Input.GetKeyDown(KeyCode.Comma)) // Por ejemplo, usar la barra espaciadora para disparar
         {
             if (mochila.shoot) // Asegúrate de que el disparador esté activado
             {

@@ -6,17 +6,15 @@ public class ButtonKeyPress : MonoBehaviour
     public Button targetButton; // Botón que se activará
 
     void Update()
-{
-    foreach (char c in Input.inputString)
     {
-        if (c == '+') // Detectar específicamente el carácter '+'
+        // Detectar si se presionó la tecla "O" o "o"
+        if (Input.GetKeyDown(KeyCode.O))  // Detecta cuando se presiona la tecla "O"
         {
             // Mostrar el efecto visual de selección
             targetButton.Select();
-            
-            // Activar el botón
+
+            // Activar el botón (ejecutar su evento onClick)
             targetButton.onClick.Invoke();
         }
     }
-}
 }

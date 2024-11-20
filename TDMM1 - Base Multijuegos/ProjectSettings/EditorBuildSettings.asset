@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/ColdCrush/Scenes/Menu.unity
     guid: 6709b4e6e4414414993125a16448ab0e
   - enabled: 1
-    path: Assets/ColdCrush/Scenes/Animacion1.unity
+    path: Assets/ColdCrush/Scenes/Animacion Intro.unity
     guid: 145d9e0ed7bcde2489bdf0e27f049e53
   - enabled: 1
     path: Assets/ColdCrush/Scenes/Nivel1.unity

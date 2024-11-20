@@ -86,15 +86,15 @@ public class Player : MonoBehaviour
             // Movimiento en el eje X entre carriles usando los botones 1, 2 y 3
             float playerPosition = transform.position.x;
 
-            if (Input.GetKeyDown(KeyCode.Alpha1)) // Carril izquierdo
+            if (Input.GetKeyDown(KeyCode.Keypad1)) // Carril izquierdo
             {
                 transform.position = new Vector3(posCarriles[0], transform.position.y, transform.position.z);
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2)) // Carril central
+            else if (Input.GetKeyDown(KeyCode.Keypad2)) // Carril central
             {
                 transform.position = new Vector3(posCarriles[1], transform.position.y, transform.position.z);
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha3)) // Carril derecho
+            else if (Input.GetKeyDown(KeyCode.Keypad3)) // Carril derecho
             {
                 transform.position = new Vector3(posCarriles[2], transform.position.y, transform.position.z);
             }
@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
     private void Chupar()
     {
         // Si se presiona la tecla "+" y no está ya activo
-        if (Input.GetKeyDown(KeyCode.F) && canSuck && !isSucking)
+        if (Input.GetKeyDown(KeyCode.O) && canSuck && !isSucking)
         {
             animator.SetBool("Chupar", true);
             isSucking = true; // Activar estado

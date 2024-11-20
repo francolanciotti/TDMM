@@ -71,14 +71,14 @@ public class Boost : MonoBehaviour
     {
         if (playerScript != null)
         {
-            playerScript.canSuck = true;    // Habilitar acción de "Suck"
-            animator.SetBool("CanSuck", true);
+            playerScript.canSuck = false;    // Habilitar acción de "Suck"
+            animator.SetBool("CanSuck", false);
         }
         yield return new WaitForSeconds(BoostTimer); // Esperar el BoostTimer
         if (playerScript != null)
         {
-            playerScript.canSuck = false;   // Deshabilitar acción de "Suck"
-            animator.SetBool("CanSuck", false);
+            playerScript.canSuck = true;   // Deshabilitar acción de "Suck"
+            animator.SetBool("CanSuck", true);
         }
     }
 }
