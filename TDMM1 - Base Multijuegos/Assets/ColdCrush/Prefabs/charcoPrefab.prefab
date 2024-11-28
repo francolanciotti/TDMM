@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480f762d502487748b76493a89c13d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedReduction: 4
+  speedReduction: 6
   effectDuration: 3
 --- !u!54 &-405430969861193088
 Rigidbody:

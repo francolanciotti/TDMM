@@ -8,27 +8,25 @@ public class CharcoHelado : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-    Debug.Log("Objeto detectado: " + other.gameObject.name); // Log para depurar
+        Debug.Log("Objeto detectado: " + other.gameObject.name); // Log para depurar
 
-    // Verifica si el objeto que colisiona es un enemigo
-    if (other.CompareTag("Enemy"))
-    {
-        EnemyAI enemyAI = other.GetComponent<EnemyAI>();
-        if (enemyAI != null)
+        // Verifica si el objeto que colisiona es un enemigo
+        if (other.CompareTag("Enemy"))
         {
-            StartCoroutine(ApplySpeedReduction(enemyAI));
+            EnemyAI enemyAI = other.GetComponent<EnemyAI>();
+            if (enemyAI != null)
+            {
+                StartCoroutine(ApplySpeedReduction(enemyAI));
+            }
         }
     }
-  }
-
 
     private IEnumerator ApplySpeedReduction(EnemyAI enemyAI)
     {
-    Debug.Log("Reduciendo velocidad del enemigo.");
-    enemyAI.speed -= speedReduction;
-    yield return new WaitForSeconds(effectDuration);
-    enemyAI.speed += speedReduction;
-    Debug.Log("Restaurando velocidad del enemigo.");
-  }
-
+        Debug.Log("Reduciendo velocidad del enemigo.");
+        enemyAI.tempSpeedReduction += speedReduction; // Aplica la reducción temporal
+        yield return new WaitForSeconds(effectDuration);
+        enemyAI.tempSpeedReduction -= speedReduction; // Restaura la velocidad
+        Debug.Log("Restaurando velocidad del enemigo.");
+    }
 }

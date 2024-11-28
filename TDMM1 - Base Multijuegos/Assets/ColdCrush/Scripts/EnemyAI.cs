@@ -4,53 +4,66 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Configuración de comportamiento")]
+    [Header("Configuración de Velocidades")]
+    [SerializeField] private float baseSpeed = 8f;  // Velocidad base del enemigo
+    [SerializeField] private float proximitySpeedPercentage = 20f; // Porcentaje extra al acercarse al jugador
+    [SerializeField] private float farSpeedMultiplier = 1.5f; // Multiplicador de velocidad cuando está lejos
+    [SerializeField] private float proximityThreshold = 5f; // Distancia para activar velocidad dinámica cerca del jugador
+    [SerializeField] private float farThreshold = 15f; // Distancia para considerar al jugador lejos
+    [SerializeField] private float currentSpeed; // Velocidad actual calculada
+
+    [Header("Modificación de Velocidad")]
+    [SerializeField] public float tempSpeedReduction = 0f; // Reducción de velocidad temporal aplicada por el charco
+
+    [Header("Configuración del Jugador")]
     public Transform player; // Referencia al jugador
-    public float speed = 4f; // Velocidad de movimiento
+
+    [Header("Configuración de Carriles")]
     public float[] posCarriles; // Posiciones de los carriles
     public int currentLane = 1; // Carril actual
 
-    [Header("Configuración de estadísticas")]
+    [Header("Configuración de Estadísticas")]
     [SerializeField] private int dmg = 1;
-    public float score = 10f;
 
-    [SerializeField] private Configuracion_General config;
-
-    private void Awake()
+    private void Start()
     {
-        GameObject gm = GameObject.FindWithTag("GameController");
-
-        if (gm != null)
-        {
-            config = gm.GetComponent<Configuracion_General>();
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Define las posiciones de los carriles
+        // Inicializar carriles
         posCarriles = new float[3] { -5f, 0f, 5f };
+        currentSpeed = baseSpeed; // Iniciar con la velocidad base
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        MoveTowardsPlayer();
+        UpdateDynamicSpeed(); // Actualiza la velocidad dinámica
+        MoveTowardsPlayer(); // Mover hacia el jugador
     }
 
-    void OnTriggerEnter(Collider other)
+    private void UpdateDynamicSpeed()
     {
-        // Si el enemigo choca con el jugador
-        if (other.gameObject.CompareTag("Player"))
+        float dynamicSpeed = baseSpeed;
+
+        // Si el enemigo está cerca del jugador, ajusta su velocidad
+        if (player != null)
         {
-            Player player = other.GetComponent<Player>();
-            if (player != null)
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            // Si está cerca del jugador (distancia menor o igual a proximityThreshold)
+            if (distanceToPlayer <= proximityThreshold)
             {
-                Debug.Log("Te choque");
-                player.Damage(dmg);
+                dynamicSpeed = player.GetComponent<Player>().GetSpeed() * (1 + proximitySpeedPercentage / 100f);
+            }
+            // Si está lejos del jugador (distancia mayor a farThreshold)
+            else if (distanceToPlayer >= farThreshold)
+            {
+                dynamicSpeed = baseSpeed * farSpeedMultiplier;
             }
         }
+
+        // Aplica la reducción de velocidad temporal (por ejemplo, por charcos)
+        currentSpeed = dynamicSpeed - tempSpeedReduction;
+
+        // Asegurarse de que la velocidad no sea negativa
+        currentSpeed = Mathf.Max(currentSpeed, 0f);
     }
 
     private void MoveTowardsPlayer()
@@ -78,10 +91,24 @@ public class EnemyAI : MonoBehaviour
 
             // Mover al enemigo hacia la posición objetivo en el carril
             Vector3 targetPosition = new Vector3(targetPositionX, transform.position.y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
 
             // Mover hacia adelante en el eje Z
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Si el enemigo choca con el jugador
+        if (other.CompareTag("Player"))
+        {
+            Player player = other.GetComponent<Player>();
+            if (player != null)
+            {
+                Debug.Log("Te choqué");
+                player.Damage(dmg);
+            }
         }
     }
 }

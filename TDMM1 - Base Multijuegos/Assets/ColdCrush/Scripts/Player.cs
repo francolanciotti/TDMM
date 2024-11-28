@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float limitX = 8.10f;
 
     [HideInInspector] public float speed = 8;
+    [HideInInspector] public float baseSpeed = 8;     // Velocidad base del jugador
 
     [SerializeField] private bool puedeVolar = false;
 
@@ -213,4 +214,13 @@ public class Player : MonoBehaviour
         ChangeColliderProperties(false); // Revertir propiedades
         animator.SetBool("Chupar", false);
     }
+    public float GetSpeed()
+    {
+        return speed; // Devuelve la velocidad actual del jugador
+    }
+    public float GetBaseSpeed()
+    {
+        return baseSpeed; // Devuelve la velocidad base del jugador
+    }
 }
+

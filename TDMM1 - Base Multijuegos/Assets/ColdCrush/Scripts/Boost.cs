@@ -55,17 +55,17 @@ public class Boost : MonoBehaviour
     }
 
     IEnumerator SpeedBoost()
+{
+    if (playerScript != null)
     {
-        if (playerScript != null)
-        {
-            playerScript.speed += speedUp; // Aumentar la velocidad
-        }
-        yield return new WaitForSeconds(BoostTimer); // Esperar el BoostTimer
-        if (playerScript != null)
-        {
-            playerScript.speed -= speedUp; // Restablecer la velocidad
-        }
+        playerScript.speed += speedUp; // Aumentar solo la velocidad actual del jugador
     }
+    yield return new WaitForSeconds(BoostTimer); // Esperar el BoostTimer
+    if (playerScript != null)
+    {
+        playerScript.speed -= speedUp; // Restablecer la velocidad actual
+    }
+}
 
     IEnumerator DisableSuck()
     {
