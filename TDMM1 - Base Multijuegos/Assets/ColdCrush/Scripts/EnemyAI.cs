@@ -25,6 +25,9 @@ public class EnemyAI : MonoBehaviour
     [Header("Configuración de Estadísticas")]
     [SerializeField] private int dmg = 1;
 
+    private float initialProximitySpeed = 0f; // Velocidad guardada la primera vez que se acerca al jugador
+    private bool hasSetProximitySpeed = false; // Bandera para verificar si ya se ha establecido la velocidad de proximidad
+
     private void Start()
     {
         // Inicializar carriles
@@ -50,7 +53,13 @@ public class EnemyAI : MonoBehaviour
             // Si está cerca del jugador (distancia menor o igual a proximityThreshold)
             if (distanceToPlayer <= proximityThreshold)
             {
-                dynamicSpeed = player.GetComponent<Player>().GetSpeed() * (1 + proximitySpeedPercentage / 100f);
+                if (!hasSetProximitySpeed)
+                {
+                    // Guarda la velocidad inicial cuando se acerca por primera vez
+                    initialProximitySpeed = player.GetComponent<Player>().GetSpeed() * (1 + proximitySpeedPercentage / 100f);
+                    hasSetProximitySpeed = true;
+                }
+                dynamicSpeed = initialProximitySpeed; // Usar la velocidad guardada
             }
             // Si está lejos del jugador (distancia mayor a farThreshold)
             else if (distanceToPlayer >= farThreshold)
