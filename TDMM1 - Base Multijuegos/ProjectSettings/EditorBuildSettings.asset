@@ -15,8 +15,14 @@ EditorBuildSettings:
     path: Assets/ColdCrush/Scenes/Nivel1.unity
     guid: 1c4cc1098e3d45d4484822079fe1c79a
   - enabled: 1
+    path: Assets/ColdCrush/Scenes/Animacion Perdiste.unity
+    guid: 6abcf9eedd47c9e4696a905d95f4d361
+  - enabled: 1
     path: Assets/ColdCrush/Scenes/Perder.unity
     guid: c1e1148080f1a344eb20e93298e14dac
+  - enabled: 1
+    path: Assets/ColdCrush/Scenes/Animacion FInal.unity
+    guid: cfbea0385200d6a43b8209848c2ce55d
   - enabled: 1
     path: Assets/ColdCrush/Scenes/Ganar.unity
     guid: 0dc7b7c499b46304c88094004e6d6b23

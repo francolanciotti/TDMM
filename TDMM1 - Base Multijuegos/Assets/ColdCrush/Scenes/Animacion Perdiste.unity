@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201bae14ea9ed4a4aa0a4ad9f09b717e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Nivel1
-  delay: 24
+  sceneName: Perder
+  delay: 5
 --- !u!4 &848634502
 Transform:
   m_ObjectHideFlags: 0
@@ -335,7 +335,6 @@ GameObject:
   - component: {fileID: 1525781845}
   - component: {fileID: 1525781848}
   - component: {fileID: 1525781847}
-  - component: {fileID: 1525781849}
   m_Layer: 5
   m_Name: Animacion
   m_TagString: Untagged
@@ -382,7 +381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e16f682354863e548888b320682768ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73996f8a9175f574caac5237c6a9cf49, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -400,28 +399,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525781844}
   m_CullTransparentMesh: 1
---- !u!95 &1525781849
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525781844}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 94e3217b47c906a4c881ee26ea777e4b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1602909535
 GameObject:
   m_ObjectHideFlags: 0
